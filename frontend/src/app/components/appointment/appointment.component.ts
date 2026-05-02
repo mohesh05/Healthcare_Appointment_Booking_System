@@ -1,0 +1,3 @@
+import { Component } from '@angular/core';import { FormBuilder,ReactiveFormsModule } from '@angular/forms';import { HttpService } from '../../services/http.service';
+@Component({standalone:true,imports:[ReactiveFormsModule],template:`<div class='card'><h3>Book</h3><form [formGroup]='f' (ngSubmit)='submit()'><input formControlName='doctorId' placeholder='Doctor Id'><input formControlName='appointmentDate' placeholder='2026-06-01T10:00:00'><button>Book</button></form></div>`})
+export class AppointmentComponent{f=this.fb.group({doctorId:1,appointmentDate:''});constructor(private fb:FormBuilder,private http:HttpService){} submit(){this.http.book(Number(this.f.value.doctorId),{appointmentDate:this.f.value.appointmentDate}).subscribe();}}

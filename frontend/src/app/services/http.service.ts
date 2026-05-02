@@ -1,0 +1,3 @@
+import { Injectable } from '@angular/core'; import { HttpClient } from '@angular/common/http';
+@Injectable({providedIn:'root'}) export class HttpService{ base='http://localhost:8080/api'; constructor(private http:HttpClient){}
+doctors(){return this.http.get(`${this.base}/patient/doctors`);} book(did:number,b:any){return this.http.post(`${this.base}/patient/appointment?doctorId=${did}`,b);} myAppointments(){return this.http.get(`${this.base}/patient/appointments`);} doctorAppointments(){return this.http.get(`${this.base}/doctor/appointments`);} adminUsers(){return this.http.get(`${this.base}/admin/users`);} adminAppointments(){return this.http.get(`${this.base}/admin/appointments`);} }

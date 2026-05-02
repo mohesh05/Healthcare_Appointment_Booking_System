@@ -1,0 +1,3 @@
+import { Component } from '@angular/core';import { FormBuilder,ReactiveFormsModule } from '@angular/forms';import { AuthService } from '../../services/auth.service';
+@Component({standalone:true,imports:[ReactiveFormsModule],template:`<div class='card'><h3>Login</h3><form [formGroup]='f' (ngSubmit)='submit()'><input formControlName='username' placeholder='Username'><input type='password' formControlName='password' placeholder='Password'><button>Login</button></form></div>`})
+export class LoginComponent{f=this.fb.group({username:'',password:''});constructor(private fb:FormBuilder,private auth:AuthService){} submit(){this.auth.login(this.f.value).subscribe();}}
